@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Name        : pfind.c
  * Author      : Michael Logozzo
- * Pledge      : I pledge my honor that I have abided by the Stevens Honor System
+ * Version     : 1.0.0
  ******************************************************************************/
 // NOTE: Some of the comments in this document are specific to the class in question this was made for.
 #include <stdio.h>
