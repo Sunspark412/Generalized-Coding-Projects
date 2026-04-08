@@ -3,6 +3,7 @@
  * Author      : Michael Logozzo
  * Pledge      : I pledge my honor that I have abided by the Stevens Honor System
  ******************************************************************************/
+// NOTE: Some of the comments in this document are specific to the class in question this was made for.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,7 +33,7 @@ void minishell()
     char str[1024];
     // SIGINT stuff
     struct sigaction sa;
-    while(1) // sigint is broken, Try to talk with tas
+    while(1) // sigint is broken in some ways. If I run sleep 100 and then sigint, doing another sigint will then try and run sleep without a parameter
     {
         memset(&sa, 0, sizeof(sa)); // Struct set to 0 so that the current function is wiped
         sa.sa_handler = &sigint_handler;
@@ -192,7 +193,7 @@ void minishell()
                 fprintf(stderr,"execv: No such file or directory.\n");
                 exit(EXIT_FAILURE);
             }
-            else // Parent, I need to make sure sigint does nothing which it should be doing but idk
+            else // Parent, SIGINT does nothing in here since the parent must wait for the child.
             {
                 memset(&sa, 0, sizeof(sa)); // Struct set to 0 so that the current function is wiped
                 sa.sa_handler = SIG_IGN;
